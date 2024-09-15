@@ -8,7 +8,7 @@ import colors from "../utility/colors";
 const Profile =({ route}) =>
 {
     const [setContact] = useState({});
-    
+
     useEffect(()=>
         {
             fetchRandomContact().then(

@@ -67,11 +67,11 @@ const ContactsScreens = ()=>
                 }
             }
         >
-            <Stack.Screen name='Contacts' component = {Contacts} 
+            <Stack.Screen name='Contacts' component = {Contacts}
             options={{title:"Contacts"}}/>
-            <Stack.Screen 
-                name='Profile' 
-                component={Profile} 
+            <Stack.Screen
+                name='Profile'
+                component={Profile}
                 options={({route})=>
                     {
                         const {contact} = route.params;
@@ -87,7 +87,7 @@ const ContactsScreens = ()=>
                 }
             />
         </Stack.Navigator>
-        
+
     );
 }
 const FavoritesScreens = ()=>
@@ -101,9 +101,9 @@ const FavoritesScreens = ()=>
                 }
             }
         >
-            <Stack.Screen name='Favorites' component={Favorites} 
+            <Stack.Screen name='Favorites' component={Favorites}
             options={{title:"Favorites"}}/>
-            <Stack.Screen name='Profile' component={Profile} 
+            <Stack.Screen name='Profile' component={Profile}
             options={{title:"Profile"}}/>
         </Stack.Navigator>
     );
@@ -116,17 +116,17 @@ const DrawerNavigator =()=>
             <Drawer.Navigator
                 initialRouteName='ContactsScreens'
             >
-                    <Drawer.Screen name="ContactsScreens" component={ContactsScreens}
+                    <Drawer.Screen name="Contacts" component={ContactsScreens}
                         options={{
                             drawerIcon: getDrawerItemIcon('list'),
                         }}
                     />
-                    <Drawer.Screen name="FavoritesScreens" component={FavoritesScreens}
+                    <Drawer.Screen name="Favorites" component={FavoritesScreens}
                         options={{
                             drawerIcon: getDrawerItemIcon('star'),
                         }}
                     />
-                    <Drawer.Screen name="UsersScreens" component={UserSreens}
+                    <Drawer.Screen name="Users" component={UserSreens}
                         options={{
                             drawerIcon: getDrawerItemIcon('person'),
                         }}
@@ -178,7 +178,7 @@ const TabNavigator=()=>
                 activeTintColor={colors.greyLight}
                 inactiveColor={colors.geryDark}
             >
-                <Tab.Screen name="ContactsScreens" component={ContactsScreens} 
+                <Tab.Screen name="ContactsScreens" component={ContactsScreens}
                     options={{
                         tabBarIcon: getTabBarIcon('list'),
                     }}
