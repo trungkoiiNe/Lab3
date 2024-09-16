@@ -8,15 +8,19 @@ import {
   TextInput,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContactsLoading, fetchContactsSuccess, fetchContactsError } from "../screens/Store";
-import { fetchContacts } from "../utility/api";
+import {
+  fetchContactsLoading,
+  fetchContactsSuccess,
+  fetchContactsError,
+} from "../screens/Store";
+import { fetchContacts, contacts } from "../utility/api";
 import ContactListItem from "../components/ContactListItem";
 import { Profile } from "../screens/Profile";
 import { Routers } from "../screens/Routers";
 
 const keyExtractor = ({ phone }) => phone;
 
-const Contacts = ({ navigation }) => {
+const Contacts = ({ navigation,route }) => {
   const dispatch = useDispatch();
   const { contacts, loading, error } = useSelector((state) => state);
   const [searchQuery, setSearchQuery] = useState("");
@@ -35,7 +39,13 @@ const Contacts = ({ navigation }) => {
     loadContacts();
   }, [dispatch]);
 
-  const filteredContacts = contacts.filter(contact =>
+  useEffect(() => {
+    if (route.params?.newContact) {
+      dispatch(fetchContactsSuccess([...contacts, route.params.newContact]));
+    }
+  }, [route.params?.newContact]);
+
+  const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -80,7 +90,7 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 10,

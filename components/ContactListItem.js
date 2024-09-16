@@ -13,7 +13,7 @@ const ContactListItem=({
             onPress={onPress}
         >
             <View style={styles.contactInfo}>
-                <Image 
+                <Image
                     style={styles.avatar}
                     source={{
                         uri: avatar,
